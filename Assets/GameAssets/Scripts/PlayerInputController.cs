@@ -1,35 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
 {
     PlayerController _controller;
-    [SerializeField] InputActionReference _move;
-    
+    GameInputs _input;
+
     private void Awake()
     {
+        _input = new GameInputs();
         _controller = GetComponent<PlayerController>();
     }
     private void OnEnable()
     {
-        
+        _input.Player.Enable();
+        _input.UI.Enable();
+
     }
+
     private void OnDisable()
     {
-        
+        _input.Player.Disable();
+        _input.UI.Disable();
     }
-    public void MoveOn(InputAction.CallbackContext iContext)
+    private void Update()
     {
-        if (iContext.started)
-        {
-            Debug.Log("Move Started");
-            Vector2 moveFactor  = _move.action.ReadValue<Vector2>();
-            _controller._MoveForward(moveFactor.x);
-            _controller._Turn(moveFactor.y);
-
-        }
-
+        Vector2 movementFactor = _input.Player.Move.ReadValue<Vector2>() * Time.deltaTime;
+        Debug.Log(movementFactor);
+        _controller._MoveForward(movementFactor.y);
+        _controller._Turn(movementFactor.x);
     }
+
 }
