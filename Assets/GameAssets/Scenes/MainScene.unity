@@ -224,7 +224,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Developed By BAHMAN Moazzen For KingKode Karaj
+  m_Text: 'Developed By BAHMAN Moazzen For KingKode Karaj
+
+    09122612533
+
+    BahmanMoazzen@gmail.com'
 --- !u!222 &172303251
 CanvasRenderer:
   m_ObjectHideFlags: 0
