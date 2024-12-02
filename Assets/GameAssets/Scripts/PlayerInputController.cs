@@ -24,6 +24,7 @@ public class PlayerInputController : MonoBehaviour
     {
         if (iContext.started)
         {
+            Debug.Log("Move Started");
             Vector2 moveFactor  = _move.action.ReadValue<Vector2>();
             _controller._MoveForward(moveFactor.x);
             _controller._Turn(moveFactor.y);
